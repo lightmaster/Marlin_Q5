@@ -77,9 +77,35 @@
 #define E0_STEP_PIN                         PD6
 #define E0_DIR_PIN                          PD3
 
-#define E1_ENABLE_PIN                       PA3
-#define E1_STEP_PIN                         PA6
-#define E1_DIR_PIN                          PA1
+// #define E1_ENABLE_PIN                       PA3
+// #define E1_STEP_PIN                         PA6
+// #define E1_DIR_PIN                          PA1
+
+//
+// Move teh MISO_PIN to allow for RGBW installation
+//
+#define MISO_PIN                            PA1
+
+//
+// Configure UART for TMC2208/TMC2209
+//
+#if HAS_TMC_UART
+
+  #define X_SERIAL_TX_PIN                   PC8//PA10
+  #define X_SERIAL_RX_PIN                   PC8//PA10
+
+  #define Y_SERIAL_TX_PIN                   PA9//PC9
+  #define Y_SERIAL_RX_PIN                   PA9//PC9
+
+  #define Z_SERIAL_TX_PIN                   PD2//PC7
+  #define Z_SERIAL_RX_PIN                   PD2//PC7
+
+  #define E0_SERIAL_TX_PIN                  PC13
+  #define E0_SERIAL_RX_PIN                  PC13
+
+  #define TMC_BAUD_RATE                     19200
+
+#endif
 
 //
 // Temperature Sensors
@@ -134,7 +160,7 @@
 
   #define WIFI_IO0_PIN                      PC13  // MKS ESP WIFI IO0 PIN
   #define WIFI_IO1_PIN                      PC7   // MKS ESP WIFI IO1 PIN
-  #define WIFI_RESET_PIN                    PA5   // MKS ESP WIFI RESET PIN
+  // #define WIFI_RESET_PIN                    PA5   // MKS ESP WIFI RESET PIN
 #else
   //#define POWER_LOSS_PIN                  PA2   // PW_DET
   //#define PS_ON_PIN                       PB2   // PW_OFF
@@ -142,7 +168,7 @@
   #define FIL_RUNOUT2_PIN                   PE6
 #endif
 
-#define SERVO0_PIN                          PA8   // Enable BLTOUCH support
+// #define SERVO0_PIN                          PA8   // Enable BLTOUCH support
 
 //#define LED_PIN                           PB2
 
