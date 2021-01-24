@@ -7,6 +7,16 @@
 
 <img align="right" width=175 src="buildroot/share/pixmaps/logo/marlin-250.png" />
 
+## FLsun Q5 Version
+
+This version of Marlin is configured for FLsun's Q5 Delta printer. This version is setup for several modifications to the stock printer, including swapping the default A4988 extruder driver for a TMC2209, and all 4 drivers (3 TMC2208 on the towers and TMC2209 on the extruder) are placed in UART mode. This firmware is also configured to use non-standard UART pins in order to allow a RBGW LED strip to connect to the 4 PWM pins that it needs. UART pin locations are located in the [pins_MKS_ROBIN_NANO.h](Marlin/src/pins/stm32f1/pins_MKS_ROBIN_NANO.h) while the RGBW pins are located in [Configuration.h](Configuration.h).
+
+The BigTreeTech Smart Filament Sensor is also setup here, and the filament runout sensor should be disabled in [Configuration.h](Configuration.h) if you do not have one.\
+&nbsp;
+***
+&nbsp;
+
+
 Additional documentation can be found at the [Marlin Home Page](https://marlinfw.org/).
 Please test this firmware and let us know if it misbehaves in any way. Volunteers are standing by!
 
