@@ -91,14 +91,14 @@
 //
 #if HAS_TMC_UART
 
-  #define X_SERIAL_TX_PIN                   PC8//PA10
-  #define X_SERIAL_RX_PIN                   PC8//PA10
+  #define X_SERIAL_TX_PIN                   PC13
+  #define X_SERIAL_RX_PIN                   PC13
 
-  #define Y_SERIAL_TX_PIN                   PA9//PC9
-  #define Y_SERIAL_RX_PIN                   PA9//PC9
+  #define Y_SERIAL_TX_PIN                   PC13
+  #define Y_SERIAL_RX_PIN                   PC13
 
-  #define Z_SERIAL_TX_PIN                   PD2//PC7
-  #define Z_SERIAL_RX_PIN                   PD2//PC7
+  #define Z_SERIAL_TX_PIN                   PC13
+  #define Z_SERIAL_RX_PIN                   PC13
 
   #define E0_SERIAL_TX_PIN                  PC13
   #define E0_SERIAL_RX_PIN                  PC13
