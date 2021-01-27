@@ -59,7 +59,7 @@
 //
 // Servos
 //
-#define SERVO0_PIN                          PA8   // Enable BLTOUCH
+// #define SERVO0_PIN                          PA8   // Enable BLTOUCH
 
 //
 // Limit Switches
@@ -88,9 +88,35 @@
 #define E0_STEP_PIN                         PD6
 #define E0_DIR_PIN                          PD3
 
-#define E1_ENABLE_PIN                       PA3
-#define E1_STEP_PIN                         PA6
-#define E1_DIR_PIN                          PA1
+// #define E1_ENABLE_PIN                       PA3
+// #define E1_STEP_PIN                         PA6
+// #define E1_DIR_PIN                          PA1
+
+//
+// Move teh MISO_PIN to allow for RGBW installation
+//
+#define MISO_PIN                            PA1
+
+//
+// Configure UART for TMC2208/TMC2209
+//
+#if HAS_TMC_UART
+
+  #define X_SERIAL_TX_PIN                   PC13
+  #define X_SERIAL_RX_PIN                   PC13
+
+  #define Y_SERIAL_TX_PIN                   PC13
+  #define Y_SERIAL_RX_PIN                   PC13
+
+  #define Z_SERIAL_TX_PIN                   PC13
+  #define Z_SERIAL_RX_PIN                   PC13
+
+  #define E0_SERIAL_TX_PIN                  PC13
+  #define E0_SERIAL_RX_PIN                  PC13
+
+  #define TMC_BAUD_RATE                     19200
+
+#endif
 
 //
 // Temperature Sensors
@@ -145,7 +171,7 @@
 
   #define WIFI_IO0_PIN                      PC13  // MKS ESP WIFI IO0 PIN
   #define WIFI_IO1_PIN                      PC7   // MKS ESP WIFI IO1 PIN
-  #define WIFI_RESET_PIN                    PA5   // MKS ESP WIFI RESET PIN
+  // #define WIFI_RESET_PIN                    PA5   // MKS ESP WIFI RESET PIN
 #else
   //#define POWER_LOSS_PIN                  PA2   // PW_DET
   //#define PS_ON_PIN                       PB2   // PW_OFF
@@ -203,6 +229,48 @@
   #define TOUCH_BUTTONS_HW_SPI_DEVICE          2
 
   #define TFT_BUFFER_SIZE                  14400
+#endif
+
+// XPT2046 Touch Screen calibration
+#if EITHER(TFT_LVGL_UI_FSMC, TFT_480x320)
+  #ifndef XPT2046_X_CALIBRATION
+    #define XPT2046_X_CALIBRATION          17880
+  #endif
+  #ifndef XPT2046_Y_CALIBRATION
+    #define XPT2046_Y_CALIBRATION         -12234
+  #endif
+  #ifndef XPT2046_X_OFFSET
+    #define XPT2046_X_OFFSET                 -45
+  #endif
+  #ifndef XPT2046_Y_OFFSET
+    #define XPT2046_Y_OFFSET                  349
+  #endif
+#elif ENABLED(TFT_CLASSIC_UI)
+  #ifndef XPT2046_X_CALIBRATION
+    #define XPT2046_X_CALIBRATION          12149
+  #endif
+  #ifndef XPT2046_Y_CALIBRATION
+    #define XPT2046_Y_CALIBRATION          -8746
+  #endif
+  #ifndef XPT2046_X_OFFSET
+    #define XPT2046_X_OFFSET                 -35
+  #endif
+  #ifndef XPT2046_Y_OFFSET
+    #define XPT2046_Y_OFFSET                 256
+  #endif
+#elif ENABLED(TFT_320x240)
+  #ifndef XPT2046_X_CALIBRATION
+    #define XPT2046_X_CALIBRATION         -12246
+  #endif
+  #ifndef XPT2046_Y_CALIBRATION
+    #define XPT2046_Y_CALIBRATION           9453
+  #endif
+  #ifndef XPT2046_X_OFFSET
+    #define XPT2046_X_OFFSET                 360
+  #endif
+  #ifndef XPT2046_Y_OFFSET
+    #define XPT2046_Y_OFFSET                 -22
+  #endif
 #endif
 
 #define HAS_SPI_FLASH                          1
