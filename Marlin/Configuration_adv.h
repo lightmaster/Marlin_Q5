@@ -1135,6 +1135,9 @@
 
 #if ENABLED(SHOW_BOOTSCREEN)
   #define BOOTSCREEN_TIMEOUT 4000        // (ms) Total Duration to display the boot screen(s)
+  #if EITHER(HAS_MARLINUI_U8GLIB, TFT_COLOR_UI)
+    #define BOOT_MARLIN_LOGO_SMALL       // Show a smaller Bootlogo, saving tons of Flash
+  #endif
 #endif
 
 #if EITHER(SDSUPPORT, LCD_SET_PROGRESS_MANUALLY) && ANY(HAS_MARLINUI_U8GLIB, HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
@@ -1653,7 +1656,7 @@
 #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0   // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0.4   // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
   #define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
 #endif
