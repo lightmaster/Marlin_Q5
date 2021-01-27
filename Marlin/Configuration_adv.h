@@ -1102,8 +1102,8 @@
       #define LED_USER_PRESET_RED          0  // User defined RED value
       #define LED_USER_PRESET_GREEN        0  // User defined GREEN value
       #define LED_USER_PRESET_BLUE         0  // User defined BLUE value
-      #define LED_USER_PRESET_WHITE        4  // User defined WHITE value
-      #define LED_USER_PRESET_BRIGHTNESS   4  // User defined intensity
+      #define LED_USER_PRESET_WHITE        7  // User defined WHITE value
+      #define LED_USER_PRESET_BRIGHTNESS   7  // User defined intensity
       #define LED_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup
     #endif
     #if ENABLED(NEO2_COLOR_PRESETS)
@@ -1181,7 +1181,7 @@
 
   //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
 
-  #define EVENT_GCODE_SD_ABORT "G28\n M150 R0 U0 B0 W10"      // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
+  #define EVENT_GCODE_SD_ABORT "G28\n M150 R0 U0 B0 W7"      // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
 
   #if ENABLED(PRINTER_EVENT_LEDS)
     #define PE_LEDS_COMPLETED_TIME  (30*60) // (seconds) Time to keep the LED "done" color before restoring normal illumination
@@ -3233,10 +3233,10 @@
   //#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
   #define USER_DESC_1 "Bright Lights"
-  #define USER_GCODE_1 "M150 R5 U5 B100 W255"
+  #define USER_GCODE_1 "M150 R0 U0 B10 W255"
 
   #define USER_DESC_2 "Dim Lights"
-  #define USER_GCODE_2 "M150 R0 U0 B0 W4"
+  #define USER_GCODE_2 "M150 R0 U0 B0 W7"
 
 #endif
 
