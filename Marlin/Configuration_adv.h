@@ -1118,22 +1118,22 @@
   #define LED_CONTROL_MENU
   #if ENABLED(LED_CONTROL_MENU)
     #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
-    //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
+    #define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
     #if ENABLED(LED_COLOR_PRESETS)
-      #define LED_USER_PRESET_RED          0  // User defined RED value
-      #define LED_USER_PRESET_GREEN        0  // User defined GREEN value
-      #define LED_USER_PRESET_BLUE         0  // User defined BLUE value
-      #define LED_USER_PRESET_WHITE        7  // User defined WHITE value
-      #define LED_USER_PRESET_BRIGHTNESS   7  // User defined intensity
-      #define LED_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup
+      #define LED_USER_PRESET_RED         255  // User defined RED value
+      #define LED_USER_PRESET_GREEN       255  // User defined GREEN value
+      #define LED_USER_PRESET_BLUE        255  // User defined BLUE value
+      #define LED_USER_PRESET_WHITE         0  // User defined WHITE value
+      #define LED_USER_PRESET_BRIGHTNESS    5  // User defined intensity
+      #define LED_USER_PRESET_STARTUP           // Have the printer display the user preset color on startup
     #endif
     #if ENABLED(NEO2_COLOR_PRESETS)
       #define NEO2_USER_PRESET_RED        255  // User defined RED value
-      #define NEO2_USER_PRESET_GREEN      128  // User defined GREEN value
-      #define NEO2_USER_PRESET_BLUE         0  // User defined BLUE value
-      #define NEO2_USER_PRESET_WHITE      255  // User defined WHITE value
-      #define NEO2_USER_PRESET_BRIGHTNESS 255  // User defined intensity
-      //#define NEO2_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup for the second strip
+      #define NEO2_USER_PRESET_GREEN      255  // User defined GREEN value
+      #define NEO2_USER_PRESET_BLUE       255  // User defined BLUE value
+      #define NEO2_USER_PRESET_WHITE        0  // User defined WHITE value
+      #define NEO2_USER_PRESET_BRIGHTNESS   5  // User defined intensity
+      #define NEO2_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup for the second strip
     #endif
   #endif
 
@@ -3353,10 +3353,10 @@
   //#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
   #define USER_DESC_1 "Bright Lights"
-  #define USER_GCODE_1 "M150 R0 U0 B10 W255"
+  #define USER_GCODE_1 "M150 S0 R255 U255 B255 P255\nM150 S1 R255 U255 B255 P255"
 
   #define USER_DESC_2 "Dim Lights"
-  #define USER_GCODE_2 "M150 R0 U0 B0 W7"
+  #define USER_GCODE_2 "M150 S0 R255 U255 B255 P5\nM150 S1 R255 U255 B255 P5"
 
 #endif
 
