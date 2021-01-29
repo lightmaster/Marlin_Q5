@@ -650,7 +650,9 @@
 
   // Distance between bed and nozzle Z home position
   // Override with M665 H
-  #define DELTA_HEIGHT 196.60071             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
+  // #define DELTA_HEIGHT 196.60071             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
+  #define DELTA_HEIGHT 214.15071             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
+
 
   // Overrdie with M666
   #define DELTA_ENDSTOP_ADJ { 0.0, -1.43463, -0.19061 } // Get these values from G33 auto calibrate
@@ -947,7 +949,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-#define FIX_MOUNTED_PROBE
+// #define FIX_MOUNTED_PROBE
 
 /**
  * Use the nozzle as the probe, as with a conductive
@@ -964,7 +966,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 #if ENABLED(BLTOUCH)
   // #define BLTOUCH_DELAY 500
@@ -1061,7 +1063,8 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -2, -3.46, -19.60 }
+// #define NOZZLE_TO_PROBE_OFFSET { -2, -3.46, -19.60 }
+#define NOZZLE_TO_PROBE_OFFSET { 30, 17.3, -1.9 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1112,8 +1115,8 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 5
-#define EXTRA_PROBING    2
+#define MULTIPLE_PROBING 3
+#define EXTRA_PROBING    1
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1165,10 +1168,10 @@
 #define DELAY_BEFORE_PROBING 200  // (ms) To prevent vibrations from triggering piezo sensors
 
 // Require minimum nozzle and/or bed temperature for probing
-//#define PREHEAT_BEFORE_PROBING
+#define PREHEAT_BEFORE_PROBING
 #if ENABLED(PREHEAT_BEFORE_PROBING)
-  #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
-  #define PROBING_BED_TEMP     50
+  // #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
+  #define PROBING_BED_TEMP     70
 #endif
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
