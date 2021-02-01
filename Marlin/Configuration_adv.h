@@ -1118,13 +1118,13 @@
   #define LED_CONTROL_MENU
   #if ENABLED(LED_CONTROL_MENU)
     #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
-    #define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
+    // #define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
     #if ENABLED(LED_COLOR_PRESETS)
       #define LED_USER_PRESET_RED         255  // User defined RED value
       #define LED_USER_PRESET_GREEN       255  // User defined GREEN value
       #define LED_USER_PRESET_BLUE        255  // User defined BLUE value
       #define LED_USER_PRESET_WHITE         0  // User defined WHITE value
-      #define LED_USER_PRESET_BRIGHTNESS    5  // User defined intensity
+      #define LED_USER_PRESET_BRIGHTNESS    7  // User defined intensity
       #define LED_USER_PRESET_STARTUP           // Have the printer display the user preset color on startup
     #endif
     #if ENABLED(NEO2_COLOR_PRESETS)
@@ -1534,9 +1534,6 @@
   //#define LCD_LANGUAGE_3 de
   //#define LCD_LANGUAGE_4 es
   //#define LCD_LANGUAGE_5 it
-  #ifdef LCD_LANGUAGE_2
-    //#define LCD_LANGUAGE_AUTO_SAVE // Automatically save language to EEPROM on change
-  #endif
 #endif
 
 //
@@ -2609,24 +2606,24 @@
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+  #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     100  // [mm/s]
-  #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     100
-  #define Y2_HYBRID_THRESHOLD    100
-  #define Z_HYBRID_THRESHOLD       3
-  #define Z2_HYBRID_THRESHOLD      3
-  #define Z3_HYBRID_THRESHOLD      3
-  #define Z4_HYBRID_THRESHOLD      3
-  #define E0_HYBRID_THRESHOLD     30
-  #define E1_HYBRID_THRESHOLD     30
-  #define E2_HYBRID_THRESHOLD     30
-  #define E3_HYBRID_THRESHOLD     30
-  #define E4_HYBRID_THRESHOLD     30
-  #define E5_HYBRID_THRESHOLD     30
-  #define E6_HYBRID_THRESHOLD     30
-  #define E7_HYBRID_THRESHOLD     30
+  #define X_HYBRID_THRESHOLD     200  // [mm/s]
+  #define X2_HYBRID_THRESHOLD    200
+  #define Y_HYBRID_THRESHOLD     200
+  #define Y2_HYBRID_THRESHOLD    200
+  #define Z_HYBRID_THRESHOLD     200
+  #define Z2_HYBRID_THRESHOLD    200
+  #define Z3_HYBRID_THRESHOLD    200
+  #define Z4_HYBRID_THRESHOLD    200
+  #define E0_HYBRID_THRESHOLD     45
+  #define E1_HYBRID_THRESHOLD     45
+  #define E2_HYBRID_THRESHOLD     45
+  #define E3_HYBRID_THRESHOLD     45
+  #define E4_HYBRID_THRESHOLD     45
+  #define E5_HYBRID_THRESHOLD     45
+  #define E6_HYBRID_THRESHOLD     45
+  #define E7_HYBRID_THRESHOLD     45
 
   /**
    * Use StallGuard to home / probe X, Y, Z.

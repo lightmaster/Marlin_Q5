@@ -616,7 +616,7 @@
   // This is a trade-off between visible corners (not enough segments)
   // and processor overload (too many expensive sqrt calls).
   // Override with M665 S<blank>
-  #define DELTA_SEGMENTS_PER_SECOND 200
+  #define DELTA_SEGMENTS_PER_SECOND     200
 
   // After homing move down to a height where XY movement is unconstrained
   //#define DELTA_HOME_TO_SAFE_ZONE
@@ -638,34 +638,34 @@
 
   #if EITHER(DELTA_AUTO_CALIBRATION, DELTA_CALIBRATION_MENU)
     // Set the steprate for papertest probing
-    #define PROBE_MANUALLY_STEP 0.05      // (mm)
+    #define PROBE_MANUALLY_STEP         0.05      // (mm)
   #endif
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
-  #define DELTA_PRINTABLE_RADIUS 100.0   // (mm)
+  #define DELTA_PRINTABLE_RADIUS        100.0   // (mm)
 
   // Center-to-center distance of the holes in the diagonal push rods.
   // Override with M665 L
-  #define DELTA_DIAGONAL_ROD 215.0725        // (mm) // @UPDATED Was 215.0975
+  #define DELTA_DIAGONAL_ROD            215.0725        // (mm) // @UPDATED Was 215.0725
 
   // Distance between bed and nozzle Z home position
   // Override with M665 H
   // #define DELTA_HEIGHT 196.60071             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
-  #define DELTA_HEIGHT 214.15071             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
+  #define DELTA_HEIGHT                  196.03779            // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
 
 
   // Overrdie with M666
-  #define DELTA_ENDSTOP_ADJ { 0.0, -1.43463, -0.19061 } // Get these values from G33 auto calibrate
+  #define DELTA_ENDSTOP_ADJ             { 0.00000, -1.88055, -1.22343 } // Get these values from G33 auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
   // Override with M665 R
-  #define DELTA_RADIUS 106.30502             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 105.8094
+  #define DELTA_RADIUS                  106.47208             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 105.8094
 
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
   // measured in degrees anticlockwise looking from above the printer
   // Override with M665 XYZ
-  #define DELTA_TOWER_ANGLE_TRIM { 0.10881, 0.07198, -0.18079 } // Get these values from G33 auto calibrate //@ UPDATED was 0.2233, -0.0910, -0.1324
+  #define DELTA_TOWER_ANGLE_TRIM        { -0.50055, 0.85116, -0.35061 } // Get these values from G33 auto calibrate //@ UPDATED was 0.2233, -0.0910, -0.1324
 
   // Delta radius and diagonal rod adjustments (mm)
   //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
@@ -815,7 +815,7 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 250, 250, 250, 50 }
+#define DEFAULT_MAX_FEEDRATE          { 250, 250, 250, 70 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -942,14 +942,14 @@
  * Use G29 repeatedly, adjusting the Z height at each point with movement commands
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
-//#define PROBE_MANUALLY
-//#define MANUAL_PROBE_START_Z 0.2
+// #define PROBE_MANUALLY
+// #define MANUAL_PROBE_START_Z 0.2
 
 /**
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-// #define FIX_MOUNTED_PROBE
+#define FIX_MOUNTED_PROBE
 
 /**
  * Use the nozzle as the probe, as with a conductive
@@ -966,7 +966,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-#define BLTOUCH
+// #define BLTOUCH
 
 #if ENABLED(BLTOUCH)
   // #define BLTOUCH_DELAY 500
@@ -1064,7 +1064,8 @@
  *     O-- FRONT --+
  */
 // #define NOZZLE_TO_PROBE_OFFSET { -2, -3.46, -19.60 }
-#define NOZZLE_TO_PROBE_OFFSET { 30, 17.3, -1.9 }
+// #define NOZZLE_TO_PROBE_OFFSET { 30, 17.3, -1.85 }
+#define NOZZLE_TO_PROBE_OFFSET { -2.3, -1.4, -19.54400}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1116,7 +1117,7 @@
  * A total of 3 or more adds more slow probes, taking the average.
  */
 #define MULTIPLE_PROBING 3
-#define EXTRA_PROBING    1
+#define EXTRA_PROBING    2
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1143,8 +1144,10 @@
 #define Z_PROBE_OFFSET_RANGE_MIN -32
 #define Z_PROBE_OFFSET_RANGE_MAX 32
 
-// Enable the M48 repeatability test to test probe accuracy
-#define Z_MIN_PROBE_REPEATABILITY_TEST
+#if ANY(FIX_MOUNTED_PROBE, NOZZLE_AS_PROBE, BLTOUCH, SOLENOID_PROBE,Z_PROBE_ALLEN_KEY, Z_PROBE_SLED)
+  // Enable the M48 repeatability test to test probe accuracy
+  #define Z_MIN_PROBE_REPEATABILITY_TEST
+#endif
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1170,7 +1173,7 @@
 // Require minimum nozzle and/or bed temperature for probing
 #define PREHEAT_BEFORE_PROBING
 #if ENABLED(PREHEAT_BEFORE_PROBING)
-  // #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
+  // #define PROBING_NOZZLE_TEMP 220   // (°C) Only applies to E0 at this time
   #define PROBING_BED_TEMP     70
 #endif
 
@@ -1388,7 +1391,7 @@
 //#define AUTO_BED_LEVELING_LINEAR
 // #define AUTO_BED_LEVELING_BILINEAR
 #define AUTO_BED_LEVELING_UBL
-//#define MESH_BED_LEVELING
+// #define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -1497,7 +1500,7 @@
   //===========================================================================
 
   #define MESH_INSET 10          // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 3    // Don't use more than 7 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 5    // Don't use more than 7 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define MESH_G28_REST_ORIGIN // After homing all axes ('G28' or 'G28 XYZ') rest Z at Z_MIN_POS
@@ -2676,16 +2679,16 @@
 #define NEOPIXEL_LED
 #if ENABLED(NEOPIXEL_LED)
   #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-  #define NEOPIXEL_PIN     PC7       // LED driving pin
-  #define NEOPIXEL2_TYPE  NEO_GRB
-  #define NEOPIXEL2_PIN    PA6
+  #define NEOPIXEL_PIN     PA6       // LED driving pin
+  // #define NEOPIXEL2_TYPE  NEO_GRB
+  // #define NEOPIXEL2_PIN    PC7
   #define NEOPIXEL_PIXELS 48       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
   #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-  #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
+  #define NEOPIXEL_BRIGHTNESS   7  // Initial brightness (0-255)
   // #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
   // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...
-  #define NEOPIXEL2_SEPARATE
+  // #define NEOPIXEL2_SEPARATE
   #if ENABLED(NEOPIXEL2_SEPARATE)
     #define NEOPIXEL2_PIXELS      48  // Number of LEDs in the second strip
     #define NEOPIXEL2_BRIGHTNESS   5  // Initial brightness (0-255)
