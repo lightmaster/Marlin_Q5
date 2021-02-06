@@ -533,9 +533,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 70.92149
-  #define DEFAULT_bedKi 13.60604
-  #define DEFAULT_bedKd 246.45219
+  #define DEFAULT_bedKp  53.39926
+  #define DEFAULT_bedKi   7.49990
+  #define DEFAULT_bedKd 253.46851
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -619,7 +619,7 @@
   #define DELTA_SEGMENTS_PER_SECOND     200
 
   // After homing move down to a height where XY movement is unconstrained
-  //#define DELTA_HOME_TO_SAFE_ZONE
+  #define DELTA_HOME_TO_SAFE_ZONE
 
   // Delta calibration menu
   // uncomment to add three points calibration menu option.
@@ -651,21 +651,21 @@
   // Distance between bed and nozzle Z home position
   // Override with M665 H
   // #define DELTA_HEIGHT 196.60071             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
-  #define DELTA_HEIGHT                  196.03779            // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
+  #define DELTA_HEIGHT                  196.61537            // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
 
 
   // Overrdie with M666
-  #define DELTA_ENDSTOP_ADJ             { 0.00000, -1.88055, -1.22343 } // Get these values from G33 auto calibrate
+  #define DELTA_ENDSTOP_ADJ             { 0.00000, -1.31342, -0.16214 } // Get these values from G33 auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
   // Override with M665 R
-  #define DELTA_RADIUS                  106.47208             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 105.8094
+  #define DELTA_RADIUS                  106.25681             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 105.8094
 
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
   // measured in degrees anticlockwise looking from above the printer
   // Override with M665 XYZ
-  #define DELTA_TOWER_ANGLE_TRIM        { -0.50055, 0.85116, -0.35061 } // Get these values from G33 auto calibrate //@ UPDATED was 0.2233, -0.0910, -0.1324
+  #define DELTA_TOWER_ANGLE_TRIM        { 0.11841, -0.05825, -0.06016 } // Get these values from G33 auto calibrate //@ UPDATED was 0.2233, -0.0910, -0.1324
 
   // Delta radius and diagonal rod adjustments (mm)
   //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }

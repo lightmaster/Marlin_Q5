@@ -1716,7 +1716,7 @@
 #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.4   // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0   // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
   #define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
 #endif
@@ -2545,7 +2545,7 @@
    */
   #define STEALTHCHOP_XY
   #define STEALTHCHOP_Z
-  #define STEALTHCHOP_E
+  // #define STEALTHCHOP_E
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -2608,14 +2608,14 @@
    */
   #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     200  // [mm/s]
-  #define X2_HYBRID_THRESHOLD    200
-  #define Y_HYBRID_THRESHOLD     200
-  #define Y2_HYBRID_THRESHOLD    200
-  #define Z_HYBRID_THRESHOLD     200
-  #define Z2_HYBRID_THRESHOLD    200
-  #define Z3_HYBRID_THRESHOLD    200
-  #define Z4_HYBRID_THRESHOLD    200
+  #define X_HYBRID_THRESHOLD     255  // [mm/s]
+  #define X2_HYBRID_THRESHOLD    255
+  #define Y_HYBRID_THRESHOLD     255
+  #define Y2_HYBRID_THRESHOLD    255
+  #define Z_HYBRID_THRESHOLD     255
+  #define Z2_HYBRID_THRESHOLD    255
+  #define Z3_HYBRID_THRESHOLD    255
+  #define Z4_HYBRID_THRESHOLD    255
   #define E0_HYBRID_THRESHOLD     45
   #define E1_HYBRID_THRESHOLD     45
   #define E2_HYBRID_THRESHOLD     45
