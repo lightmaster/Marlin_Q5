@@ -651,7 +651,7 @@
   // Distance between bed and nozzle Z home position
   // Override with M665 H
   // #define DELTA_HEIGHT 196.60071             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
-  #define DELTA_HEIGHT                  196.702752            // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
+  #define DELTA_HEIGHT                  196.737752            // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
 
 
   // Overrdie with M666
