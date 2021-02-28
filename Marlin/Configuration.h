@@ -502,9 +502,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  10.67668
-    #define DEFAULT_Ki   0.56550
-    #define DEFAULT_Kd  50.39391
+    #define DEFAULT_Kp  33.46715
+    #define DEFAULT_Ki   3.87351
+    #define DEFAULT_Kd  72.28904
   #endif
 #endif // PIDTEMP
 
@@ -705,20 +705,20 @@
   // Distance between bed and nozzle Z home position
   // Override with M665 H
   // #define DELTA_HEIGHT 196.60071             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
-  #define DELTA_HEIGHT                  196.84814            // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
+  #define DELTA_HEIGHT                  200.10930            // (mm) Get this value from G33 auto calibrate //@ UPDATED was 197.056
 
   // Overrdie with M666
-  #define DELTA_ENDSTOP_ADJ             { 0.00000, -0.86241, -0.19774 } // Get these values from G33 auto calibrate
+  #define DELTA_ENDSTOP_ADJ             { 0.00000, -1.50750, -0.86089 } // Get these values from G33 auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
   // Override with M665 R
-  #define DELTA_RADIUS                  106.12705             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 105.8094
+  #define DELTA_RADIUS                  106.31038             // (mm) Get this value from G33 auto calibrate //@ UPDATED was 105.8094
 
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
   // measured in degrees anticlockwise looking from above the printer
   // Override with M665 XYZ
-  #define DELTA_TOWER_ANGLE_TRIM        { -0.23248, 0.12992, 0.10256 } // Get these values from G33 auto calibrate //@ UPDATED was 0.2233, -0.0910, -0.1324
+  #define DELTA_TOWER_ANGLE_TRIM        { -0.15504, 0.25413, -0.09909 } // Get these values from G33 auto calibrate //@ UPDATED was 0.2233, -0.0910, -0.1324
 
   // Delta radius and diagonal rod adjustments (mm)
   //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
@@ -1118,7 +1118,7 @@
  */
 // #define NOZZLE_TO_PROBE_OFFSET { -2, -3.46, -19.60 }
 // #define NOZZLE_TO_PROBE_OFFSET { 30, 17.3, -1.85 }
-#define NOZZLE_TO_PROBE_OFFSET { -2.3, -1.4, -19.93500}
+#define NOZZLE_TO_PROBE_OFFSET { -2.3, -1.4, -16.26500}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
