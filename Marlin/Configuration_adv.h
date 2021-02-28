@@ -3249,7 +3249,7 @@
  */
 #define EXTENDED_CAPABILITIES_REPORT
 #if ENABLED(EXTENDED_CAPABILITIES_REPORT)
-  //#define M115_GEOMETRY_REPORT
+  #define M115_GEOMETRY_REPORT
 #endif
 
 /**
@@ -3373,13 +3373,13 @@
   //#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
   #define USER_DESC_1 "Bright Lights"
-  #define USER_GCODE_1 "M150 S0 R255 U255 B255 P255\nM150 S1 R255 U255 B255 P255"
+  #define USER_GCODE_1 "M150 R255 U255 B255 P255"
 
   #define USER_DESC_2 "Dim Lights"
-  #define USER_GCODE_2 "M150 S0 R255 U255 B255 P5\nM150 S1 R255 U255 B255 P5"
+  #define USER_GCODE_2 "M150 R255 U255 B255 P7"
 
   #define USER_DESC_3 "Retract Filament"
-  #define USER_GCODE_3 "M83\nG1 E-2 F1500"
+  #define USER_GCODE_3 "M83\nG1 E-4 F1500"
 #endif
 
 /**
