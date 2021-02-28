@@ -12,7 +12,7 @@
 <span style="color:red;font-weight:bold">This repo is used as a way to store and track my config changes. Use of this repo is at your own risk as I have taken no precautions for others being able to use this and I take no responsibility for you damaging your printer or other property through your use of this repo. As such, if you decide to ignore this warning, I will not provide any support, and may god have mercy on your printer.</span>
 &nbsp;
 
-This version of Marlin is configured for FLsun's Q5 Delta printer using the stock control board with various other upgrades. The default A4988 extruder driver and the 3 Tower TMC2208 drivers for all TMC2209 and placing them in single-wire UART mode (pin located in [pins_MKS_ROBIN_NANO.h](Marlin/src/pins/stm32f1/pins_MKS_ROBIN_NANO.h)). This firmware is also configured to use a semi-working NeoPixel.
+This version of Marlin is configured for FLsun's Q5 Delta printer using the BigTreeTech SKR 1.4 Turbo control board with various other upgrades. The default A4988 extruder driver and the 3 Tower TMC2208 drivers for all TMC2209 and placing them in single-wire UART mode (pin located in [pins_MKS_ROBIN_NANO.h](Marlin/src/pins/stm32f1/pins_MKS_ROBIN_NANO.h)). This firmware is also configured to use a semi-working NeoPixel.
 
 The BigTreeTech Smart Filament Sensor is also setup here, and the filament runout sensor should be disabled in [Configuration.h](Configuration.h) if you do not have one.\
 &nbsp;
