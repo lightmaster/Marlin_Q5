@@ -2753,7 +2753,7 @@
   // #define NEOPIXEL_PIN     PA6       // LED driving pin
   // #define NEOPIXEL2_TYPE  NEO_GRB
   // #define NEOPIXEL2_PIN    PC7
-  #define NEOPIXEL_PIXELS 30       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
+  #define NEOPIXEL_PIXELS 13       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
   #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
   #define NEOPIXEL_BRIGHTNESS   7  // Initial brightness (0-255)
   // #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup

@@ -1136,7 +1136,7 @@
       #define LED_USER_PRESET_GREEN       255  // User defined GREEN value
       #define LED_USER_PRESET_BLUE        255  // User defined BLUE value
       #define LED_USER_PRESET_WHITE         0  // User defined WHITE value
-      #define LED_USER_PRESET_BRIGHTNESS    7  // User defined intensity
+      #define LED_USER_PRESET_BRIGHTNESS  126  // User defined intensity
       #define LED_USER_PRESET_STARTUP           // Have the printer display the user preset color on startup
     #endif
     #if ENABLED(NEO2_COLOR_PRESETS)
@@ -1238,7 +1238,7 @@
 
   //#define BROWSE_MEDIA_ON_INSERT          // Open the file browser when media is inserted
 
-  #define EVENT_GCODE_SD_ABORT "G28\n M150 R255 U255 B255 W7"      // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
+  #define EVENT_GCODE_SD_ABORT "G28\n M150 R255 U255 B255 P126"      // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
 
   #if ENABLED(PRINTER_EVENT_LEDS)
     #define PE_LEDS_COMPLETED_TIME  (30*60) // (seconds) Time to keep the LED "done" color before restoring normal illumination
@@ -3376,7 +3376,7 @@
   #define USER_GCODE_1 "M150 R255 U255 B255 P255"
 
   #define USER_DESC_2 "Dim Lights"
-  #define USER_GCODE_2 "M150 R255 U255 B255 P7"
+  #define USER_GCODE_2 "M150 R255 U255 B255 P126"
 
   #define USER_DESC_3 "Retract Filament"
   #define USER_GCODE_3 "M83\nG1 E-4 F1500"
