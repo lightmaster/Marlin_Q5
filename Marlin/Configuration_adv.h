@@ -3464,14 +3464,14 @@
   #define USER_DESC_4 "Retract Filament"
   #define USER_GCODE_4 "M83\nG1 E-4 F1500"
 
-  #define USER_DESC_5 "Cancel OctoPrint"
-  #define USER_GCODE_5 "M118 A1 action:cancel"
+  #define USER_DESC_5 "Pause OctoPrint"
+  #define USER_GCODE_5 "M118 A1 ACTION:PAUSE"
 
-  #define USER_DESC_6 "Pause OctoPrint"
-  #define USER_GCODE_6 "M118 A1 action:pause"
+  #define USER_DESC_6 "Resume OctoPrint"
+  #define USER_GCODE_6 "M118 A1 ACTION:RESUME"
 
-  #define USER_DESC_7 "Resume OctoPrint"
-  #define USER_GCODE_7 "M118 A1 action:resume"
+  #define USER_DESC_7 "Cancel OctoPrint"
+  #define USER_GCODE_7 "M118 A1 ACTION:CANCEL"
 #endif
 
 /**
