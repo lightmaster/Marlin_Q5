@@ -102,6 +102,11 @@ enum BlockFlagBit : char {
   #if ENABLED(DIRECT_STEPPING)
     , BLOCK_BIT_IS_PAGE
   #endif
+
+  // Sync the fan speeds from the block
+  #if ENABLED(LASER_SYNCHRONOUS_M106_M107)
+    , BLOCK_BIT_SYNC_FANS
+  #endif
 };
 
 enum BlockFlag : char {
@@ -112,7 +117,12 @@ enum BlockFlag : char {
   #if ENABLED(DIRECT_STEPPING)
     , BLOCK_FLAG_IS_PAGE            = _BV(BLOCK_BIT_IS_PAGE)
   #endif
+  #if ENABLED(LASER_SYNCHRONOUS_M106_M107)
+    , BLOCK_FLAG_SYNC_FANS          = _BV(BLOCK_BIT_SYNC_FANS)
+  #endif
 };
+
+#define BLOCK_MASK_SYNC ( BLOCK_FLAG_SYNC_POSITION | TERN0(LASER_SYNCHRONOUS_M106_M107, BLOCK_FLAG_SYNC_FANS) )
 
 #if ENABLED(LASER_POWER_INLINE)
 
@@ -170,7 +180,9 @@ typedef struct block_t {
     static constexpr uint8_t extruder = 0;
   #endif
 
-  TERN_(MIXING_EXTRUDER, MIXER_BLOCK_FIELD); // Normalized color for the mixing steppers
+  #if ENABLED(MIXING_EXTRUDER)
+    mixer_comp_t b_color[MIXING_STEPPERS];  // Normalized color for the mixing steppers
+  #endif
 
   // Settings for the trapezoid generator
   uint32_t accelerate_until,                // The index of the step event on which to stop acceleration
@@ -470,14 +482,14 @@ class Planner {
     static void refresh_positioning();
 
     // For an axis set the Maximum Acceleration in mm/s^2
-    static void set_max_acceleration(const uint8_t axis, const float &inMaxAccelMMS2);
+    static void set_max_acceleration(const uint8_t axis, float inMaxAccelMMS2);
 
     // For an axis set the Maximum Feedrate in mm/s
-    static void set_max_feedrate(const uint8_t axis, const float &inMaxFeedrateMMS);
+    static void set_max_feedrate(const uint8_t axis, float inMaxFeedrateMMS);
 
     // For an axis set the Maximum Jerk (instant change) in mm/s
     #if HAS_CLASSIC_JERK
-      static void set_max_jerk(const AxisEnum axis, const float &inMaxJerkMMS);
+      static void set_max_jerk(const AxisEnum axis, float inMaxJerkMMS);
     #else
       static inline void set_max_jerk(const AxisEnum, const float&) {}
     #endif
@@ -496,6 +508,16 @@ class Planner {
 
     // Manage fans, paste pressure, etc.
     static void check_axes_activity();
+
+    // Apply fan speeds
+    #if HAS_FAN
+      static void sync_fan_speeds(uint8_t (&fan_speed)[FAN_COUNT]);
+      #if FAN_KICKSTART_TIME
+        static void kickstart_fan(uint8_t (&fan_speed)[FAN_COUNT], const millis_t &ms, const uint8_t f);
+      #else
+        FORCE_INLINE static void kickstart_fan(uint8_t (&)[FAN_COUNT], const millis_t &, const uint8_t) {}
+      #endif
+    #endif
 
     #if ENABLED(FILAMENT_WIDTH_SENSOR)
       void apply_filament_width_sensor(const int8_t encoded_ratio);
@@ -719,9 +741,12 @@ class Planner {
 
     /**
      * Planner::buffer_sync_block
-     * Add a block to the buffer that just updates the position
+     * Add a block to the buffer that just updates the position or in
+     * case of LASER_SYNCHRONOUS_M106_M107 the fan pwm
      */
-    static void buffer_sync_block();
+    static void buffer_sync_block(
+      TERN_(LASER_SYNCHRONOUS_M106_M107, uint8_t sync_flag=BLOCK_FLAG_SYNC_POSITION)
+    );
 
   #if IS_KINEMATIC
     private:
@@ -896,7 +921,8 @@ class Planner {
     #endif
 
     #if ENABLED(AUTOTEMP)
-      static float autotemp_min, autotemp_max, autotemp_factor;
+      static celsius_t autotemp_min, autotemp_max;
+      static float autotemp_factor;
       static bool autotemp_enabled;
       static void autotemp_update();
       static void autotemp_M104_M109();
